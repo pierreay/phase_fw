@@ -3,6 +3,7 @@ TARGETS          := nrf52832_xxaa
 OUTPUT_DIRECTORY := _build
 
 SDK_ROOT := ${NORDIC_SEMI_SDK}
+REPO_DIR := ../../../../..
 PROJ_DIR := ../../..
 
 $(OUTPUT_DIRECTORY)/nrf52832_xxaa.out: \
@@ -28,7 +29,9 @@ SRC_FILES += \
   $(SDK_ROOT)/components/toolchain/gcc/gcc_startup_nrf52.S \
   $(SDK_ROOT)/components/toolchain/system_nrf52.c \
   $(SDK_ROOT)/components/drivers_nrf/hal/nrf_ecb.c \
-  $(SDK_ROOT)/external/tiny-AES128/aes.c
+  $(REPO_DIR)/ext/tinyaes/aes.c
+  # $(SDK_ROOT)/external/tiny-AES128/aes.c
+  # NOTE: Swap the previous lines to switch AES from SDK to AES from repository.
 
 # Include folders common to all targets
 INC_FOLDERS += \
@@ -57,7 +60,9 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/toolchain \
   $(SDK_ROOT)/components/drivers_nrf/common \
   $(SDK_ROOT)/components/drivers_nrf/hal \
-  $(SDK_ROOT)/external/tiny-AES128
+  $(REPO_DIR)/ext/tinyaes
+  # $(SDK_ROOT)/external/tiny-AES128
+  # NOTE: Swap the previous lines to switch AES from SDK to AES from repository.
 
 # Libraries common to all targets
 LIB_FILES += \
