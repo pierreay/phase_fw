@@ -4,4 +4,7 @@ Firmware for the phase project.
 
 * Files
 
+- [[file:ext]] :: External libraries.
+- [[file:ext/tinyaes]] :: TinyAES extracted from Nordic SDK v14.2.0_17b948a
+  orginally from https://github.com/kokke/tiny-AES128-C.
 - [[file:nrf52832]] :: nRF52832 firmware.
