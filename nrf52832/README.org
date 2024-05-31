@@ -1,0 +1,42 @@
+* Prerequisites
+
+Install the Nordic SDK v14:
+
+#+begin_src bash :eval never
+cd /tmp && wget https://developer.nordicsemi.com/nRF5_SDK/nRF5_SDK_v14.x.x/nRF5_SDK_14.2.0_17b948a.zip
+unzip nRF5_SDK_14.2.0_17b948a.zip && rm nRF5_SDK_14.2.0_17b948a.zip
+sudo mv nRF5_SDK_14.2.0_17b948a /opt
+#+end_src
+
+Export an environment variable pointing to it:
+
+#+begin_src bash :eval never
+export NORDIC_SEMI_SDK="/path/to/sdk"
+#+end_src
+
+* Build
+
+Compile (optionally flash) the =sc-poc= firmware:
+
+#+begin_src bash :eval never
+cd sc-poc
+# Compile only:
+make -C pca10040/blank/armgcc flash
+# Compile and flash:
+make -C pca10040/blank/armgcc flash
+#+end_src
+
+If =arm-none-eabi-gcc= is not found, use the following:
+
+#+begin_src bash :eval never
+make GNU_INSTALL_ROOT=/path/to/arm-none-eabi/bin -C pca10040/blank/armgcc
+#+end_src
+
+* Clean
+
+Clean the =sc-poc= firmware build inside the =_build= subdirectory:
+
+#+begin_src bash :eval never
+cd sc-poc
+make -C pca10040/blank/armgcc clean
+#+end_src

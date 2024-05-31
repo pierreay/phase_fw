@@ -1,0 +1,7 @@
+* About
+
+Firmware for the phase project.
+
+* Files
+
+- [[file:nrf52832]] :: nRF52832 firmware.
