@@ -1,0 +1,32 @@
+* Prerequisites
+
+Install avr-gcc, avrdude, avr-libc from your packet manager.
+
+Build ARL:
+
+#+begin_src bash :eval never
+cd ARL
+make all_dbg
+#+end_src
+
+* Build
+
+Compile (optionally flash) the =aesonly-poc= firmware:
+
+#+begin_src bash :eval never
+cd aesonly-poc
+make all_dbg
+#+end_src
+
+# Flash:
+#+begin_src bash :eval never
+make load_dbg PORT=/dev/ttyUSB1
+#+end_src
+
+* Clean
+
+Clean the =sc-poc= firmware build inside the =_build= subdirectory:
+
+#+begin_src bash :eval never
+make clean_dbg
+#+end_src
