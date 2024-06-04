@@ -1,0 +1,36 @@
+* Prerequisites
+
+Install the Pico SDK:
+
+#+begin_src bash :eval never
+mkdir ~/.sdks/ && cd ~/.sdks
+git clone https://github.com/raspberrypi/pico-sdk.git
+cd pico-sdk
+git submodule update --init
+#+end_src
+
+Export an environment variable pointing to it:
+
+#+begin_src bash :eval never
+export PICO_SDK_PATH=~/.sdks/pico-sdk/
+#+end_src
+
+* Build
+
+Compile (optionally flash) the =sc-poc= firmware:
+
+#+begin_src bash :eval never
+cd aesonly-poc
+# Compile:
+mkdir build && cd build && cmake -DPICO_BOARD=pico_w .. && make -j8
+# Flash:
+cp aesonly-poc.uf2 <path to USB drive>/RPI-RP2/
+#+end_src
+
+* Clean
+
+Clean the =sc-poc= firmware build inside the =_build= subdirectory:
+
+#+begin_src bash :eval never
+rm -rf build 
+#+end_src
