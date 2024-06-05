@@ -2,7 +2,8 @@
 #include "pico/cyw43_arch.h"
 #include "tinyaes/aes.h"
 
-
+// TODO: Print clock frequency.
+// TODO: Print clock source.
 
 /** @brief Function for outputting usage info to the serial port.
 */
