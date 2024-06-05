@@ -1,6 +1,6 @@
 * Prerequisites
 
-Install the Pico SDK:
+Install the Pico SDK (~500 MB):
 
 #+begin_src bash :eval never
 mkdir ~/.sdks/ && cd ~/.sdks
@@ -17,14 +17,22 @@ export PICO_SDK_PATH=~/.sdks/pico-sdk/
 
 * Build
 
-Compile (optionally flash) the =sc-poc= firmware:
+Compile the =aesonly-poc= firmware:
 
 #+begin_src bash :eval never
 cd aesonly-poc
 # Compile:
 mkdir build && cd build && cmake -DPICO_BOARD=pico_w .. && make -j8
+#+end_src
+
+Mount the Pico partition in a temporary mount point and use =cp= with the
+firmware to flash it:
+
+#+begin_src bash :eval never
+sudo mount /dev/sda1 /mnt
 # Flash:
-cp aesonly-poc.uf2 <path to USB drive>/RPI-RP2/
+sudo cp aesonly-poc.uf2 /mnt
+sudo umount /mnt
 #+end_src
 
 * Clean
