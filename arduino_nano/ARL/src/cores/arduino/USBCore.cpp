@@ -576,7 +576,7 @@ ISR(USB_COM_vect)
 			}
 			else
 			{
-				// TODO: handle the HALT state of an endpoint here
+				// XXX: handle the HALT state of an endpoint here
 				// see "Figure 9-6. Information Returned by a GetStatus() Request to an Endpoint" in usb_20.pdf for more information
 				Send8(0);
 				Send8(0);
@@ -825,7 +825,7 @@ void USBDevice_::detach()
 }
 
 //	Check for interrupts
-//	TODO: VBUS detection
+//	XXX: VBUS detection
 bool USBDevice_::configured()
 {
 	return _usbConfiguration;
