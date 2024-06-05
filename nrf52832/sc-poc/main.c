@@ -48,6 +48,7 @@
 *
 */
 
+// TODO: Create a sc-poc without radio and a sc-poc-w with radio.
 
 #include <stdint.h>
 #include <stdbool.h>
