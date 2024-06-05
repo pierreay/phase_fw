@@ -11,3 +11,5 @@ Firmware for the phase project.
 - [[file:nrf52832]] :: nRF52832 firmware.
 - [[file:nrf52832/sc-poc]] :: Simplified version of firmware from ScreamingChannels
   PoC.
+
+- [[file:pico]] :: Raspberry Pi Pico (RP2040) firmware.
