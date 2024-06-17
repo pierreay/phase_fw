@@ -8,6 +8,7 @@
 static void help(void)
 {
     printf("Usage:\r\n");
+    printf("a: Automatic AES\r\n");
     printf("p: Print configuration\r\n");
     printf("n: Enter tiny_aes_128 mode\r\n");
     printf("   p: Enter plaintext\r\n");
@@ -52,6 +53,20 @@ void write_128(uint8_t* out){
            out[ 4],out[ 5],out[ 6],out[ 7],
            out[ 8],out[ 9],out[10],out[11],
            out[12],out[13],out[14],out[15]);
+}
+
+/*
+ * @brief Function to automatically perform tiny_aes_128 attacks
+ */
+void tiny_aes_128_auto(){
+    printf("Automatic tiny_aes_128 \r\n");
+    uint8_t key[16] = {0};
+    uint8_t in[16] = {0};
+    uint8_t out[16] = {0};
+    while (true) {
+        for(uint32_t j = 0; j < 0xff; j++);
+        AES128_ECB_encrypt(in, key, out);
+    }
 }
 
 /*
@@ -122,6 +137,9 @@ int main() {
         scanf("%c",&control);
         switch (control)
         {
+            case 'a':
+                tiny_aes_128_auto();
+                break;
             case 'p':
                 print_config();
                 break;
