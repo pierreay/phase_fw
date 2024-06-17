@@ -1,15 +1,14 @@
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
+#include "hardware/clocks.h"
 #include "tinyaes/aes.h"
-
-// TODO: Print clock frequency.
-// TODO: Print clock source.
 
 /** @brief Function for outputting usage info to the serial port.
 */
 static void help(void)
 {
     printf("Usage:\r\n");
+    printf("p: Print configuration\r\n");
     printf("n: Enter tiny_aes_128 mode\r\n");
     printf("   p: Enter plaintext\r\n");
     printf("   k: Enter key\r\n");
@@ -19,6 +18,12 @@ static void help(void)
     printf("   q: Quit tiny_aes_128 mode\r\n");
 }
 
+void print_config()
+{
+    clock_hw_t *clock = &clocks_hw->clk[clk_sys];
+    printf("clk_sys_freq=%d MHz\n", clock_get_hz(clk_sys) / 1000000);
+    printf("clk_sys_ctrl=0x%x\n", clock->ctrl);
+}
 
 /*
  * @brief Function to read 16 integers from the serial line and to write them in
@@ -117,7 +122,9 @@ int main() {
         scanf("%c",&control);
         switch (control)
         {
-    
+            case 'p':
+                print_config();
+                break;
             case 'n':
                 tiny_aes_128_mode();
                 break;
