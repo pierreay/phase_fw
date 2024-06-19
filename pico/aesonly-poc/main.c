@@ -1,4 +1,5 @@
 #include "pico/stdlib.h"
+#include "pico/time.h"
 #include "pico/cyw43_arch.h"
 #include "hardware/clocks.h"
 #include "tinyaes/aes.h"
@@ -8,7 +9,7 @@
 static void help(void)
 {
     printf("Usage:\r\n");
-    printf("a: Automatic AES\r\n");
+    printf("a: Start automatic mode (Wait/AES)\r\n");
     printf("p: Print configuration\r\n");
     printf("n: Enter tiny_aes_128 mode\r\n");
     printf("   p: Enter plaintext\r\n");
@@ -58,14 +59,20 @@ void write_128(uint8_t* out){
 /*
  * @brief Function to automatically perform tiny_aes_128 attacks
  */
-void tiny_aes_128_auto(){
-    printf("Automatic tiny_aes_128 \r\n");
+void auto_mode(){
+    printf("Automatic mode \r\n");
     uint8_t key[16] = {0};
     uint8_t in[16] = {0};
     uint8_t out[16] = {0};
     while (true) {
-        for(uint32_t j = 0; j < 0xff; j++);
-        AES128_ECB_encrypt(in, key, out);
+        // Wait
+        printf("Start waiting...\n");
+        sleep_ms(500);
+        // AES
+        printf("Start encrypting...\n");
+        for (uint32_t i = 0; i < 20000; i++) {
+            AES128_ECB_encrypt(in, key, out);
+        }
     }
 }
 
@@ -138,7 +145,7 @@ int main() {
         switch (control)
         {
             case 'a':
-                tiny_aes_128_auto();
+                auto_mode();
                 break;
             case 'p':
                 print_config();
