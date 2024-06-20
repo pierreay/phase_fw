@@ -139,6 +139,7 @@ static void init(void)
 static void help(void)
 {
     printf("Usage:\r\n");
+    printf("0: Start automatic mode (Wait/AES)\r\n");
     printf("a: Enter start channel for sweep/channel for constant carrier\r\n");
     printf("b: Enter end channel for sweep\r\n");
     printf("c: Start TX carrier\r\n");
@@ -374,6 +375,26 @@ void write_128(uint8_t* out){
 }
 
 /*
+ * @brief Function to automatically perform tiny_aes_128 attacks
+ */
+void auto_mode(){
+    printf("Automatic mode \r\n");
+    uint8_t key[16] = {0};
+    uint8_t in[16] = {0};
+    uint8_t out[16] = {0};
+    while (true) {
+        // Wait
+        printf("Start waiting...\r\n");
+        for (uint32_t j = 0; j < 0xFFFFF; j++) {}
+        // AES
+        printf("Start encrypting...\r\n");
+        for (uint32_t i = 0; i < 500; i++) {
+            AES128_ECB_encrypt(in, key, out);
+        }
+    }
+}
+
+/*
  * @brief Function to handle tiny_aes_128 attacks
  */
 void tiny_aes_128_mode(){
@@ -478,6 +499,9 @@ int main(void)
         scanf("%c",&control);
         switch (control)
         {
+            case '0':
+                auto_mode();
+                break;
             case 'a':
                 while (true)
                 {
