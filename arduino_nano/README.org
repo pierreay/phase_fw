@@ -30,3 +30,11 @@ Clean the =sc-poc= firmware build inside the =_build= subdirectory:
 #+begin_src bash :eval never
 make clean_dbg
 #+end_src
+
+* Connect
+
+Connect using baudrate of 9600:
+
+#+begin_src bash :eval neve
+picocom -b 9600 /dev/ttyUSB1
+#+end_src
