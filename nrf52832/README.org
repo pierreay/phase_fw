@@ -29,8 +29,11 @@ make -C pca10040/blank/armgcc flash
 If =arm-none-eabi-gcc= is not found, use the following:
 
 #+begin_src bash :eval never
-make GNU_INSTALL_ROOT=/path/to/arm-none-eabi/bin -C pca10040/blank/armgcc
+make GNU_INSTALL_ROOT=/path/to/arm-none-eabi -C pca10040/blank/armgcc
 #+end_src
+
+Or configure this variable permanently in the
+=$NORDIC_SEMI_SDK/components/toolchain/gcc/Makefile.posix= file.
 
 * Clean
 
