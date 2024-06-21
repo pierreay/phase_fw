@@ -5,6 +5,7 @@ export OUTPUT_FILENAME
 MAKEFILE_NAME := $(MAKEFILE_LIST)
 MAKEFILE_DIR := $(dir $(MAKEFILE_NAME) ) 
 
+NORDIC_SEMI_SDK = $(NORDIC_SEMI_SDK_V11)
 TEMPLATE_PATH = $(NORDIC_SEMI_SDK)/components/toolchain/gcc
 ifeq ($(OS),Windows_NT)
 include $(TEMPLATE_PATH)/Makefile.windows
