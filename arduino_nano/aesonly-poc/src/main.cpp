@@ -5,6 +5,7 @@
 static void help(void)
 {
     Serial.print("Usage:\r\n");
+    Serial.print("a: Start automatic mode (Wait/AES)\r\n");
     Serial.print("n: Enter tiny_aes_128 mode\r\n");
     Serial.print("   p: Enter plaintext\r\n");
     Serial.print("   k: Enter key\r\n");
@@ -43,6 +44,26 @@ void write_128(uint8_t* out){
       Serial.print(" ");
     }
     Serial.print("\r\n");
+}
+
+/*
+ * @brief Function to automatically perform tiny_aes_128 attacks
+ */
+void auto_mode(){
+    printf("Automatic mode \r\n");
+    uint8_t key[16] = {0};
+    uint8_t in[16] = {0};
+    uint8_t out[16] = {0};
+    while (true) {
+        // Wait
+        Serial.print("Start waiting...\r\n");
+        delay(1000);
+        // AES
+        Serial.print("Start encrypting...\r\n");
+        for (uint32_t i = 0; i < 5000; i++) {
+            AES128_ECB_encrypt(in, key, out);
+        }
+    }
 }
 
 /*
@@ -118,7 +139,9 @@ void loop() {
     control = Serial.read();
     switch (control)
     {
-
+        case 'a':
+            auto_mode();
+            break;
         case 'n':
             tiny_aes_128_mode();
             break;
