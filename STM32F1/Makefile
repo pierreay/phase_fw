@@ -50,6 +50,7 @@ SRCS       = main.c
 SRCS      += system_$(MCU_FAMILY).c
 SRCS      += stm32f1xx_it.c
 SRCS      += stm32f1xx_hal_msp.c
+SRCS      += aes.c
 
 # Basic HAL libraries
 SRCS      += stm32f1xx_hal_rcc.c stm32f1xx_hal_rcc_ex.c stm32f1xx_hal.c stm32f1xx_hal_cortex.c stm32f1xx_hal_gpio.c stm32f1xx_hal_uart.c $(BSP_BASE).c
@@ -101,6 +102,7 @@ INCS      += -I$(BSP_DIR)
 INCS      += -I$(CMSIS_DIR)/Include
 INCS      += -I$(DEV_DIR)/Include
 INCS      += -I$(HAL_DIR)/Inc
+INCS      += -I./../ext/tinyaes
 
 # Library search paths
 LIBS       = -L$(CMSIS_DIR)/Lib
@@ -123,6 +125,7 @@ VPATH      = ./src
 VPATH     += $(BSP_DIR)
 VPATH     += $(HAL_DIR)/Src
 VPATH     += $(DEV_DIR)/Source/
+VPATH     += ../ext/tinyaes
 
 OBJS       = $(addprefix obj/,$(SRCS:.c=.o))
 DEPS       = $(addprefix dep/,$(SRCS:.c=.d))
