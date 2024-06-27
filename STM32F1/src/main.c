@@ -34,13 +34,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
 #define AUTOAES_TWAIT 150
 #define AUTOAES_ITER 350
+/* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* UART handler declaration */
 UART_HandleTypeDef UartHandle;
-__IO uint32_t UserButtonStatus = 0;  /* set to 1 after User Button interrupt  */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
