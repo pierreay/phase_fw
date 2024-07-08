@@ -1,0 +1,7 @@
+cube
+obj
+dep
+*.bin
+*.elf
+*.lst
+*.map
