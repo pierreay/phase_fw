@@ -68,7 +68,7 @@ int main(void)
 {
   HAL_User_Init();
 
-  UART_write("Init OK\r\n");
+  // UART_write("Init OK\r\n");
 
   /* Infinite loop */
   while (1)
@@ -158,9 +158,53 @@ static void tiny_aes_128_mode() {
  * to a bytearray
  */
 static void read_128(uint8_t *in) {
-    int tmp;
-    for(int i=0; i<16; i++){
-        tmp = UART_getc();
+    int tmp = 0;
+    // Read 16 bytes
+    for(int i = 0; i < 16; i++) {
+        int tmp0 = 0;
+        int tmp1 = 0;
+        int tmp2 = 0;
+        // Read 3 ASCII digits
+        for(int j = 0; j < 3; j++) {
+            // NOTE: Simulate atoi()
+            tmp = UART_getc() - 48;
+
+            // DBG
+            /* char outBuf[16]; */
+            /* snprintf(outBuf, sizeof(outBuf), "%d", tmp); */
+            /* UART_write(outBuf); */
+            /* UART_write(" "); */
+
+            // If CR (carrier ret, \r) or SPACE:
+            if (tmp == -35 || tmp == -16) {
+                break;
+            }
+
+            // Put digit w.r.t. its power.
+            if (j == 0) {
+                tmp0 = tmp;
+            }
+            else if (j == 1) {
+                tmp1 = tmp0;
+                tmp0 = tmp;
+            }
+            else if (j == 2) {
+                tmp2 = tmp1;
+                tmp1 = tmp0;
+                tmp0 = tmp;
+            }
+        }
+
+        // Compute number based on separate digits.
+        tmp = tmp2 * 100 + tmp1 * 10 + tmp0;
+
+        // DBG
+        /* char outBuf[16]; */
+        /* snprintf(outBuf, sizeof(outBuf), "%d", tmp); */
+        /* UART_write(outBuf); */
+        /* UART_write(" "); */
+
+        // Save it inside byte array.
         in[i] = (uint8_t)tmp;    
     }
 }
