@@ -116,7 +116,7 @@ INCS      += -I./../ext/tinyaes
 LIBS       = -L$(CMSIS_DIR)/Lib
 
 # Compiler flags
-CFLAGS     = -Wall -g -std=c99 -Os
+CFLAGS     = -Wall -g -std=c99 -O0
 CFLAGS    += -mlittle-endian -mcpu=cortex-m3 -march=armv7-m -mthumb
 CFLAGS    += -mfloat-abi=soft
 CFLAGS    += -ffunction-sections -fdata-sections
