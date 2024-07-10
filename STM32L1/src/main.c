@@ -125,13 +125,14 @@ static void tiny_aes_128_mode() {
                 AES128_ECB_encrypt(in,key,out);
                 break;
             case 'n':           /* set number of repetitions */
-                num_repetitions = 0;
-                for(int i=3; i>=0; i--)
-                  num_repetitions |= UART_getc() << (8*i);
-                snprintf(outBuf, sizeof(outBuf), "%lu", num_repetitions);
-                UART_write("Setting number of repetitions to ");
-                UART_write(outBuf);
-                UART_write("\r\n");
+                // NOTE: BREAKED
+                /* num_repetitions = 0; */
+                /* for(int i=3; i>=0; i--) */
+                /*   num_repetitions |= UART_getc() << (8*i); */
+                /* snprintf(outBuf, sizeof(outBuf), "%lu", num_repetitions); */
+                /* UART_write("Setting number of repetitions to "); */
+                /* UART_write(outBuf); */
+                /* UART_write("\r\n"); */
                 break;
               
             case 'r':           /* repeated encryption */
