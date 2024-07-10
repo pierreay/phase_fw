@@ -104,7 +104,8 @@ static void tiny_aes_128_mode() {
     uint8_t key[16] = {0};
     uint8_t in[16] = {0};
     uint8_t out[16] = {0};
-    uint32_t num_repetitions = 1;
+    // NOTE: Fixed because breaked.
+    uint32_t num_repetitions = 100;
 
     char outBuf[16];
 
