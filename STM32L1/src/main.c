@@ -192,6 +192,8 @@ static void read_128(uint8_t *in) {
                 tmp2 = tmp1;
                 tmp1 = tmp0;
                 tmp0 = tmp;
+                // Consume last CR/SPACE.
+                UART_getc();
             }
         }
 
