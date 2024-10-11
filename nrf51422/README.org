@@ -39,6 +39,20 @@ make GNU_INSTALL_ROOT=/opt/gcc-arm-none-eabi-6_2-2016q4 -C pca10028/armgcc flash
 Or configure the =GNU_INSTALL_ROOT= variable permanently in the
 =$NORDIC_SEMI_SDK_V11/components/toolchain/gcc/Makefile.posix= file.
 
+* Debug
+
+Use the following to start a GDB server:
+
+#+begin_src bash :eval never
+cd sc-poc && make GNU_INSTALL_ROOT=/opt/gcc-arm-none-eabi-6_2-2016q4 -C pca10028/armgcc gdb-server
+#+end_src
+
+Use the following to start a GDB client:
+
+#+begin_src bash :eval never
+cd sc-poc && make GNU_INSTALL_ROOT=/opt/gcc-arm-none-eabi-6_2-2016q4 -C pca10028/armgcc gdb-client
+#+end_src
+
 * Clean
 
 Clean the =sc-poc= firmware build inside the =_build= subdirectory:

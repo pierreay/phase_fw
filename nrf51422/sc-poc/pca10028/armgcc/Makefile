@@ -196,4 +196,10 @@ flash: nrf51422_xxac
 	nrfjprog --program $(OUTPUT_BINARY_DIRECTORY)/$<.hex -f nrf51  --chiperase
 	nrfjprog --reset -f nrf51
 
-## Flash softdevice
+# NOTE: PA: Added for easy debugging through JLink. Do not work with OpenOCD.
+
+gdb-server: nrf51422_xxac
+	JLinkGDBServerCLExe -device nrf51422_xxac -if swd -port 2331
+
+gdb-client: nrf51422_xxac
+	gdb -ex "target extended-remote localhost:2331" $(OUTPUT_BINARY_DIRECTORY)/$<.out
