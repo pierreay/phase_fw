@@ -89,7 +89,9 @@ CFLAGS += -DBOARD_PCA10028
 CFLAGS += -DBSP_DEFINES_ONLY
 CFLAGS += -mcpu=cortex-m0
 CFLAGS += -mthumb -mabi=aapcs --std=gnu99
-CFLAGS += -Wall -O0 -g3
+# NOTE: Do not forget that optimization levels O0 or O3 will change leakage
+# duration --- and maybe characteristics?
+CFLAGS += -Wall -O3 -g3
 CFLAGS += -mfloat-abi=soft
 # keep every function in separate section. This will allow linker to dump unused functions
 CFLAGS += -ffunction-sections -fdata-sections -fno-strict-aliasing
