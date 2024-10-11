@@ -478,7 +478,7 @@ int main(void)
         CTS_PIN_NUMBER,
         APP_UART_FLOW_CONTROL_DISABLED,
         false,
-        UART_BAUDRATE_BAUDRATE_Baud115200
+        UART_BAUDRATE_BAUDRATE_Baud9600
     };
 
     APP_UART_FIFO_INIT(&comm_params,
