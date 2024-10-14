@@ -45,8 +45,7 @@ int read_int() {
 void read_128(uint8_t* in){
     int tmp;
     for(int i=0;i<16;i++){
-        while (!(Serial.available() > 0));
-        tmp = Serial.read();
+        tmp = read_int();
         in[i] = (uint8_t)tmp;    
     }
     /* NOTE: DEBUG: */
