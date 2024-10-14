@@ -16,6 +16,28 @@ static void help(void)
 }
 
 
+int read_int() {
+    // Read byte.
+    int bread = 0;
+    // Final read number.
+    int bfinal = 0;
+    while (true) {
+        // Wait until at least one byte is available.
+        while (!(Serial.available() > 0));
+        // Read one byte.
+        bread = Serial.read();
+        // If carriage return or space, then break.
+        if (bread == 13 || bread == 10 || bread == 32 ) {
+            break;
+        }
+        // Increment int order at each digit.
+        bfinal *= 10;
+        // Put converted read byte (from ASCII number to desired int).
+        bfinal += (bread - 48);
+    }
+    return bfinal;
+}
+
 /*
  * @brief Function to read 16 integers from the serial line and to write them in
  * to a bytearray
@@ -65,7 +87,6 @@ void auto_mode(){
         }
     }
 }
-
 /*
  * @brief Function to handle tiny_aes_128 attacks
  */
@@ -95,13 +116,11 @@ void tiny_aes_128_mode(){
                 AES128_ECB_encrypt(in,key,out);
                 break;
             case 'n':           /* set number of repetitions */
-                while (!(Serial.available() > 0));
-                num_repetitions = Serial.read();
+                num_repetitions = read_int();
                 Serial.print("Setting number of repetitions to ");
                 Serial.print(num_repetitions, DEC);
                 Serial.print("\r\n");
                 break;
-              
             case 'r':           /* repeated encryption */
                 for (uint32_t i = 0; i < num_repetitions; ++i) {
                     for(uint32_t j = 0; j < 0xff; j++);
