@@ -1,6 +1,8 @@
 # About
 
-Firmware for the phase project.
+Firmware for the PhaseSCA project.
+
+See the main project repository at **[phase_data](https://github.com/pierreay/phase_data.git)**.
 
 # Files
 
