@@ -2,7 +2,7 @@
 
 Firmware for the PhaseSCA project.
 
-See the main project repository at **[phase_data](https://github.com/pierreay/phase_data.git)**.
+See the main project repository at **[pierreay/phasesca](https://github.com/pierreay/phasesca.git)**.
 
 # Files
 
